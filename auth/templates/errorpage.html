@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Moviezone</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/static/css/app.css" />
+  </head>
+
+  <body>
+    <div id="wrap">
+      <nav id="nav-container" class="app-top-bar" data-topbar role="navigation">
+        <div class="nav-content">
+          <div class="small-4 medium-6 columns">
+            <a href="/#" id="app-logo"
+              ><img src="/static/img/moviezone-icon.png" alt="Moviezone" />
+              <span class="hide-for-small">Moviezone</span></a
+            >
+          </div>
+          <div class="small-8 medium-6 columns">
+            <div class="user-log-ctr hide">
+              <a href="/auth/login" class="right"
+                ><i class="fi-torso"></i> Login</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="container">
+        <div class="row">
+          <div class="small-12 columns">
+            <h1 class="page-title">Error</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <h2>{{ status }} - {{ error }}</h2>
+          </div>
+        </div>
+      </main>
+      <div id="push"></div>
+    </div>
+    <footer id="app-footer" class="open-menu-hide">
+      <div class="footer-content"></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Moviezone</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/static/css/app.css">
+    <script>
+    window.movieZoneToken = '{{ state }}';
+    window.userId = {{ session.user_id or 'null'}};
+    </script>
+    <script data-main="/static/js/main" src="/static/js/libs/require/require.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <nav id="nav-container" class="app-top-bar" data-topbar role="navigation">
+            <div class="nav-content">
+                <div class="small-4 medium-6 columns">
+                    <a href="/#" id="app-logo"><img src="/static/img/moviezone-icon.png" alt="Moviezone"> <span class="hide-for-small">Moviezone</span></a>
+                </div>
+                <div class="small-8 medium-6 columns">
+                    <div class="user-log-ctr">
+                    {% if not session.username %}
+                        <a href="/auth/login" class="right"><i class="fi-torso"></i> Login</a>
+                     </div>
+                    {% else %}
+                        <a href="/auth/disconnect" class="right"><i class="fi-arrow-right"></i> Logout</a>
+                     </div>
+                     <div class="user-info right">
+                        <a href="/#user/{{ session.user_id or 'null'}}">
+                        <span>{{ session.username.partition(' ')[0] + ' ' + session.username.partition(' ')[2][0] + '.'  }}</span>
+                        <img src="{{ session.picture}}" width="36" height="36" alt="{{ session.username }}">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>  
+    <main id="container">
+    </main>
+    <div id="modal-menu-ctr">
+    </div>
+    <div id="flash-message-ctr">
+    </div>
+    <div id="push"></div>
+    </div>
+    <footer id="app-footer" class="open-menu-hide">
+        <div class="footer-content">
+        </div>
+    </footer>
+</body>
+
+</html>
