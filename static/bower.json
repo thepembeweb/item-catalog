@@ -1,0 +1,8 @@
+{
+  "name": "moviezone-template",
+  "dependencies": {
+    "foundation": "~5.5.2",
+    "foundation-icon-fonts": "zurb/foundation-icon-fonts",
+    "blazy": "*"
+  }
+}

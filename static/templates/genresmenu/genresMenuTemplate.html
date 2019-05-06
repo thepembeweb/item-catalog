@@ -1,0 +1,20 @@
+<div class="genres-menu-bg hide"></div>
+<div id="genres-menu-container" class="hide" data-name="" data-id="" data-menu="closed">
+    <div class="genres-menu-list-ctr">
+        <button class="close-menu right circle-button ripple"> <i class="fi-x"></i></button>
+        <h3 class="page-title">
+            <a href="/#" class="genres-menu-list-item" data-id="0">All the genres <span id="total-count" class="genre-count" data-genre-count="0"><%= totalCount %></span> <i class="fi-check hide"></i></a>
+        </h3>
+        <ul class="genres-menu-list">
+            <% _.each(genres, function(genre, index){ %>
+            <% if(genre){ %>
+            <li>
+                <a href="/#genre/<%= genre.get("id") %>" class="genres-menu-list-item" data-id="<%= genre.get("id") %>">
+                    <%= genre.get("name") %> <span class="genre-count" data-genre-count="<%= genre.get("id") %>"><%= genre.get("count") %></span> <i class="fi-check right hide"></i>
+                </a>
+            </li>
+            <%}%>
+            <% }); %>
+        </ul>
+    </div>
+</div>

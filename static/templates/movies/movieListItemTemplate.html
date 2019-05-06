@@ -1,0 +1,44 @@
+<div class="card-container">
+    <div class="card">
+        <div class="card-dropdown-container">
+            <% if(window.userId == movie.get("user_id")){ %>
+            <button href="#" data-dropdown="drop-<%= movie.get("id") %>" aria-controls="drop-<%= movie.get("id") %>" aria-expanded="false" class="button tiny secondary">&#8226;&#8226;&#8226;</button>
+            <br>
+            <ul id="drop-<%= movie.get("id") %>" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                <li><a href="/#edit/<%= movie.get("id") %>" data-id="<%= movie.get("id") %>" class="card-edit-btn"><i class="fi-pencil"></i> Update movie</a></li>
+                <li><a href="/#picture/<%= movie.get("id") %>" data-id="<%= movie.get("id") %>" class="card-edit-pic-btn"><i class="fi-photo"></i> Change picture</a></li>
+                <li><a href="#" data-id="<%= movie.get("id") %>" class="card-delete-btn"><i class="fi-x-circle"></i> Delete</a></li>
+            </ul>
+            <% } %>
+        </div>
+        <a href="/#movie/<%= movie.get("id") %>" class="card-header-link">
+            <div class="card-header image-wrapper">
+                <div class="dark-layer"></div>
+                <% 
+                    var image;
+                    if(movie.get("image_url") == "null" || movie.get("image_url") == null){
+                        image = "/static/img/movie-icon.png";
+                    }else{
+                        image = "/static/uploads/" + movie.get("image_url");
+                    } %>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<%= image %>" alt="<%= movie.get("name") %>" class="b-lazy">
+        <div class="card-title"><%= movie.get("name") %></div>
+        </div>
+    </a>
+    <div class="card-info">
+        <div class="card-subinfo">
+            <small>Rating:</small>
+            <br>
+            <span><% for(var i = 0; i < movie.get("rating"); i++){ %><i class="fi-star"></i><% } %></span>
+        </div>
+        <div class="card-subinfo">
+            <small>Duration:</small>
+            <br>
+            <span><i class="fi-clock"></i> <%= movie.get("duration") %> minutes</span>
+        </div>
+    </div>
+    <div class="card-genre">
+        Genre: <a href="/#genre/<%= movie.get("genre_id") %>"><%= genres[movie.get("genre_id")] %></a>
+    </div>
+    </div>
+</div>

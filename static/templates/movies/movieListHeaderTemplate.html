@@ -1,0 +1,19 @@
+<div class="submenu-container">
+  <div class="<% if(!!window.userId){ %>submenu-half<% }else{ %>submenu<% } %>">
+    <span class="bold"><%= defaultGenre.name %> <i class="fi-check"></i></span>
+    <a
+      href="#!"
+      id="genre-select"
+      class="right bold genre-menu"
+      data-id="<%= defaultGenre.id %>"
+      ><i class="fi-widget"></i> Select a genre</a
+    >
+  </div>
+  <% if(!!window.userId){ %>
+  <div class="submenu-half">
+    <a href="#new_movie" class="right bold"
+      ><i class="fi-plus"></i> Add a new movie</a
+    >
+  </div>
+  <% } %>
+</div>

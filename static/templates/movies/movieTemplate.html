@@ -1,0 +1,73 @@
+<style>
+body {
+    background-color: #F9F9F9;
+}
+#container{ overflow: visible !important;}
+</style>
+<div class="movie-banner">
+    <% 
+        var image;
+        if(movie.get("image_url") == "null" || movie.get("image_url") == null){
+			 image = "/static/img/movie-icon.png";
+		}else{
+            image = "/static/uploads/" + movie.get("image_url");
+        } %>
+    <div class="movie-img-container" style="background-image: url(<%= image %>)">
+    </div>
+</div>
+<div class="movie-container">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2 class="movie-title"><%= movie.get("name") %></h2>
+            <div class="row">
+                <div class="small-12 medium-6 large-4 columns">
+                	<small>Genre:</small>
+                    <br>
+                    <a href="/#genre/<%= movie.get("genre_id") %>" class="movie-link">
+                        <%= genres[movie.get("genre_id")] %>
+                    </a>
+                </div>
+                <div class="small-6 medium-3 large-4 columns movie-time">
+                    <small>Duration:</small>
+                    <br>
+                    <span><i class="fi-clock"></i> <%= movie.get("duration") %> minutes</span>
+                </div>
+                <div class="small-6 medium-3 large-4 columns movie-rating">
+                    <small>Rating:</small>
+                    <br>
+                    <span><% for(var i = 0; i < movie.get("rating"); i++){ %><i class="fi-star"></i><% } %></span>
+                </div>
+            </div>
+            <p class="movie-description">
+                <%= movie.get("description") %>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<div class="movie-footer-links">
+			<a href="/#" class="go-back-btn movie-action-btn">&#10229; Go back</a>
+            <% if(window.userId == movie.get("user_id")){ %>
+            <div class="movie-dropdown-container">
+                <a href="#" data-dropdown="drop-<%= movie.get("id") %>"aria-controls="drop-<%= movie.get("id") %>" aria-expanded="false" class="movie-action-btn"><span class="meatballs">&#8226;&#8226;&#8226;</span> Edit</a>
+                <br>
+                <ul id="drop-<%= movie.get("id") %>" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                    <li><a href="/#edit/<%= movie.get("id") %>" data-id="<%= movie.get("id") %>" class="card-edit-btn"><i class="fi-pencil"></i> Update movie</a></li>
+                    <li><a href="/#picture/<%= movie.get("id") %>" data-id="<%= movie.get("id") %>" class="card-edit-pic-btn"><i class="fi-photo"></i> Change picture</a></li>
+                    <li><a href="#" data-id="<%= movie.get("id") %>" class="movie-delete-btn"><i class="fi-x-circle"></i> Delete</a></li>
+                </ul>
+            </div>
+            <% } %>
+		</div>
+	</div>
+</div>
+<!-- Reveal Modals begin -->
+<div id="confirm-deletion" class="reveal-modal" data-reveal aria-labelledby="Confirm movie deletion" aria-hidden="true" role="dialog">
+  <h2 id="confirm-deletion-name"></h2>
+  <p>Are you sure you want to delete this movie?</p>
+  <a href="/#" class="confirm-deletion-confirm button">Yes, I'm sure</a>
+  <a href="/#" class="confirm-deletion-abort button secondary right">No, just kidding</a>
+  <!--<p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>-->
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

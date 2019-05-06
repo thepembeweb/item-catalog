@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="small-12 columns">
+        <section>
+            <h2 class="page-title"><% if(movie){ %><%= movie.get("name") %><% }else{ %>New movie<% } %></h2>
+            <form id="new-movie-form" class="col s12" method="post" action="#!">
+                <div class="row">
+                    <div class="small-12 medium-8 columns">
+                        <label for="genre_id" class="required">Select a genre</label>
+                        <select name="genre_id">
+                            <% _.each(genres, function(genre){ %>
+                                <option value="<%= genre.get('id') %>"
+                                    <% if(movie && genre.get('id')==movie.get('genre_id')){ %> selected<% }else{ %>
+                                        <% if ( genre.get('id')==1 ){ %> selected<% } %>
+                                    <% } %>>
+                                        <%= genre.get('name') %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12  medium-8 columns">
+                        <% 
+                            var name = '';
+                            if(movie){
+                                name = movie.get('name');
+                            }
+                        %>
+                        <label for="name" class="required">Name</label>
+                        <input id="name" name="name" type="text" class="validate" value="<%= name %>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 medium-8 columns">
+                        <% 
+                            var description = '';
+                            if(movie){
+                                description = movie.get('description');
+                            }
+                        %>
+                        <label for="description" class="required">Description</label>
+                        <textarea id="description" name="description" rows="20"><%= description %></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12  medium-8 columns">
+                        <% 
+                            var rating = 1;
+                            if(movie){
+                                rating = movie.get('rating');
+                            }
+                        %>
+                        <fieldset class="rating">
+                            <legend>Rating:</legend>
+                            <input type="radio" id="star5" name="rating" value="5" <% if(rating == 5){ %>checked="checked"<% } %>>
+                            <label for="star5">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4" <% if(rating == 4){ %>checked="checked"<% } %>>
+                            <label for="star4">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" <% if(rating == 3){ %>checked="checked"<% } %>>
+                            <label for="star3">3 stars</label>
+                            <input type="radio" id="star2" name="rating" value="2" <% if(rating == 2){ %>checked="checked"<% } %>>
+                            <label for="star2">2 stars</label>
+                            <input type="radio" id="star1" name="rating" value="1" <% if(rating == 1){ %>checked="checked"<% } %>>
+                            <label for="star1">1 star</label>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12  medium-8 columns">
+                        <% 
+                            var duration = 90;
+                            if(movie){
+                                duration = movie.get('duration');
+                            }
+                        %>
+                        <label for="duration" class="required">Duration in minutes</label>
+                        <div class="row">
+                            <div class="small-10 medium-11 columns">
+                                <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;start: 0;end: 180;step: 5;initial: <%= duration %>;">
+                                    <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                                    <span class="range-slider-active-segment"></span>
+                                    <input type="hidden" name="duration">
+                                </div>
+                            </div>
+                            <div class="small-2 medium-1 columns">
+                                <span id="sliderOutput3" style="display:block;margin-top:17px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12  medium-8 columns">
+                        <button type="submit" class="button small m-t-1">SUBMIT</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

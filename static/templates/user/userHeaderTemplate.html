@@ -1,0 +1,18 @@
+<div class="user-header-info">
+  <div class="row">
+    <div class="small-3 medium-2 columns">
+      <img src="<%= user.get("picture") %>" alt="<%= user.get("name") %>"
+      class="user-movies-profile-pic">
+    </div>
+    <div class="small-9 medium-10 columns">
+      <h3 class="user-movies-name"><%= user.get("name") %>'s movies</h3>
+      <a href="/#" class="go-back-btn movie-action-btn">&#10229; Go back</a>
+      <% if(!!window.userId){ %>
+      <div class="show-for-small user-movies-btn-devider"></div>
+      <a href="#new_movie" class="movie-action-btn user-movies-add-btn"
+        >+ Add a new movie</a
+      >
+      <% } %>
+    </div>
+  </div>
+</div>

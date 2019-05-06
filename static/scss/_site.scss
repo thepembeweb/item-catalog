@@ -1,0 +1,211 @@
+html,
+body {
+ width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+}
+
+body{
+	-webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  //height: 100%;
+  //height: auto !important;
+  
+  /* Negative indent footer by it's height */
+  margin-top: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: -($footer-height);
+  clear: both;
+  
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#app-footer {
+  clear: both;
+  min-height: $footer-height;
+}    
+
+#container{
+  position: relative;
+  padding: 0 0 2rem;
+  //min-height: 100%;
+  overflow: auto;
+}
+
+/*iframe{
+	height:100% !important;
+	border:0;
+	overflow-x:hidden;
+}*/
+
+a > svg {
+  pointer-events: none;
+}
+
+small{
+  color: $small-font-color;
+}
+
+/*
+==================================
+ACCORDION
+==================================*/ 
+
+.accordion{
+  margin-left: 0;
+}
+
+.accordion-anchor{
+
+  position: relative;
+
+  &::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.accordion .accordion-navigation.active>a {
+  //color: $anchor-font-color;
+  color: $white;
+}
+.accordion .accordion-navigation.active>a:hover {
+  //background: scale-color($silver, $lightness: -5%);
+  background: scale-color($anchor-font-color, $lightness: -5%);
+}
+
+.accordion-handler-icon{
+  line-height: 0;
+  margin-top: -0.1rem;
+}
+
+.accordion-handler-icon.open .accordion-opener{
+  display: none;
+}
+
+.accordion-handler-icon.closed .accordion-closer{
+  display: none;
+}
+
+.accordion-closer{
+  //stroke: $anchor-font-color;
+  stroke: $white;
+  circle{
+    fill: $anchor-font-color;
+  }
+}
+
+ .accordion-opener{
+  stroke: $anchor-font-color;
+  circle:first-of-type{
+    fill: $white;
+  }
+  
+  circle:not(:first-of-type){
+    fill: $anchor-font-color;
+  }
+}
+
+/*
+==================================
+TYPOGRAPHY
+==================================*/
+
+.page-title{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid $border-color;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.line-through{
+  text-decoration: line-through;
+}
+
+.success-title{
+  color: $success-color !important;
+}
+
+/*
+==================================
+FORMS
+==================================*/
+
+label.required{
+  font-weight: bold;
+
+  &::after{
+    content: "*";
+  }
+}
+
+/*
+==================================
+UTILITIES
+==================================*/
+
+.block-auto{
+  display: block;
+  overflow: auto;
+}
+
+
+.m-t-1{
+  margin-top: 1rem;
+}
+
+.m-t-2{
+  margin-top: 2rem;
+}
+
+.m-t-3{
+  margin-top: 3rem;
+}
+
+.m-b-1{
+  margin-bottom: 1rem;
+}
+
+.m-b-2{
+  margin-bottom: 2rem;
+}
+
+.m-b-3{
+  margin-bottom: 3rem;
+}
+
+
+
+/*
+==================================
+MEDIA QUERIES
+==================================*/
+
+/***********X-LARGE UP**********/
+
+@media #{$xlarge-up}{
+  /*.row{
+    max-width: 73.75rem;
+  }
+
+  .contain-to-grid .top-bar {
+    max-width: 73.75rem;
+  }*/
+}
