@@ -40,7 +40,7 @@ def getUserID(email):
     try:
         user = db_session.query(User).filter_by(email=email).one()
         return user.id
-    except:
+    except NoResultFound:
         return None
 
 
